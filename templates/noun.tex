@@ -1,0 +1,18 @@
+{% extends 'entry.tex' %}
+{%- block content %}
+{%- if obj_moro %}
+\objmoro{ {{obj_moro}} }
+{%- endif %}
+{%- if obj_ipa %}
+\objipa{ {{obj_ipa}} }
+{%- endif %}
+{%- if pos %}
+\pos{ {{pos}} }
+{%- endif %}
+{%- if pl_ipa %}
+\plipa{ {{pl_ipa}} }
+{%- endif %}
+{%- if nounclass %}
+\nounclass{ {{nounclass}} }
+{%- endif %}
+{%- endblock %}

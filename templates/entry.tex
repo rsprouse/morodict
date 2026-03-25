@@ -1,0 +1,14 @@
+\newentry
+{%- if headword %}
+\headword{ {{headword}} }
+{%- endif %}
+{%- if pronunciation %}
+\pronunciation{ [{{pronunciation}}] }
+{%- endif %}
+{%- if pfv_moro %}
+\pfvmoro{ {{pfv_moro}} }
+{%- endif %}
+{%- if translation %}
+\translation{ {{translation}} }
+{%- endif %}
+{% block content %}{% endblock %}

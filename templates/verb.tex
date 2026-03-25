@@ -1,0 +1,21 @@
+{% extends 'entry.tex' %}
+{%- block content %}
+{%- if imp_moro %}
+\impmoro{ {{imp_moro}} }
+{%- endif %}
+{%- if imp_ipa %}
+\impipa{ {{imp_ipa}} }
+{%- endif %}
+{%- if ipfv_moro %}
+\ipfvmoro{ {{ipfv_moro}} }
+{%- endif %}
+{%- if ipfv_ipa %}
+\ipfvipa{ {{ipfv_ipa}} }
+{%- endif %}
+{%- if pfv_moro %}
+\pfvmoro{ {{pfv_moro}} }
+{%- endif %}
+{%- if pfv_ipa %}
+\pfvipa{ {{pfv_ipa}} }
+{%- endif %}
+{%- endblock %}

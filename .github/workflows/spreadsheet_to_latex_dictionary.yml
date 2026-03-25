@@ -1,0 +1,38 @@
+name: Create dictionary.tex from google spreadsheet
+
+on: workflow_dispatch
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+concurrency:
+  group: "build-latex"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: [actions/checkout](https://github.com)@v6
+        
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r build-requirements.txt
+
+      - name: Build dictionary.tex
+
+      - name: Build dictionary.tex artifact file
+        run: |
+          mkdir -p morodict-output
+          python spreadsheet_to_tex.py > morodict-output/dictionary.tex
+          
+      - name: Upload artifacts
+        uses: [actions/upload-artifact](https://github.com/actions/upload-artifact)@v6
+        with:
+          name: morodict-output
+          path: morodict-output/
+

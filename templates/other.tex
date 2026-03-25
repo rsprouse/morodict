@@ -1,0 +1,9 @@
+{% extends 'entry.tex' %}
+{%- block content %}
+{%- if pfv_moro %}
+\pfvmoro{ {{pfv_moro}} }
+{%- endif %}
+{%- if pfv_ipa %}
+\pfvipa{ {{pfv_ipa}} }
+{%- endif %}
+{%- endblock %}
