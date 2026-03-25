@@ -1,0 +1,2 @@
+# morodict
+Moro dictionary tools
