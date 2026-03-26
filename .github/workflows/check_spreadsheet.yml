@@ -1,0 +1,37 @@
+name: Check google spreadsheet for errors
+
+on: workflow_dispatch
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+concurrency:
+  group: "check-spreadsheet"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: pip install -r test-requirements.txt
+
+      - name: Run tests
+        env:
+          SHEET_ID: ${{ secrets.SHEET_ID }}
+        run: |
+          mkdir -p morodict-test-output
+          python -m pytest test/test.py > morodict-test-output/results.txt
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          name: morodict-test-output
+          path: morodict-test-output/
+
