@@ -27,11 +27,5 @@ jobs:
           SHEET_ID: ${{ secrets.SHEET_ID }}
         run: |
           mkdir -p morodict-test-output
-          python -m pytest test/test.py > morodict-test-output/results.txt
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v6
-        with:
-          name: morodict-test-output
-          path: morodict-test-output/
+          python -m pytest test/test.py
 
