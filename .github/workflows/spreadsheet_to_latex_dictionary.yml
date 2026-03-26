@@ -23,6 +23,8 @@ jobs:
         run: pip install -r build-requirements.txt
 
       - name: Build dictionary.tex artifact file
+        env:
+          SHEET_ID: ${{ secrets.SHEET_ID }}
         run: |
           mkdir -p morodict-output
           python spreadsheet_to_tex.py > morodict-output/dictionary.tex
